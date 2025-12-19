@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Go Dashboard</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <div class="auth-container">
+    <h1>Create Account</h1>
+    <p class="auth-subtitle">Sign up to access the dashboard</p>
+
+    <form id="signupForm" novalidate>
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        required
+        minlength="3"
+      >
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        required
+        minlength="6"
+      >
+
+      <input
+        type="password"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        required
+        minlength="6"
+      >
+
+      <small class="hint">
+        Password must be at least 6 characters long
+      </small>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p class="auth-link">
+      Already have an account?
+      <a href="/login">Login</a>
+    </p>
+
+    <p id="signupMessage" class="auth-message"></p>
+  </div>
+
+  <script src="/assets/js/auth.js"></script>
+
+</body>
+</html>

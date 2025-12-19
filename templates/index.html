@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Go Real-Time Dashboard</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Go + Gin Real-Time Dashboard</h1>
+    <button id="themeToggle">Toggle Dark/Light Mode</button>
+  </header>
+
+  <main class="dashboard-grid">
+    <!-- Dynamic List -->
+    <section class="card collapsible">
+      <h2>Dynamic List <span class="toggleBtn">▼</span></h2>
+      <ul id="itemList"></ul>
+    </section>
+
+    <!-- Form -->
+    <section class="card collapsible">
+      <h2>Submit Your Name <span class="toggleBtn">▼</span></h2>
+      <form id="myForm">
+        <input type="text" name="name" placeholder="Enter name" required>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="formResponse"></p>
+    </section>
+
+
+    <!-- Live Line Chart -->
+    <section class="card collapsible">
+      <h2>Live Line Chart <span class="toggleBtn">▼</span></h2>
+      <div class="btn-group">
+        <button id="startLine">Start</button>
+        <button id="stopLine">Stop</button>
+      </div>
+      <canvas id="liveLineChart" width="400" height="200"></canvas>
+    </section>
+
+    <!-- Live Bar Chart -->
+    <section class="card collapsible">
+      <h2>Live Bar Chart <span class="toggleBtn">▼</span></h2>
+      <div class="btn-group">
+        <button id="startBar">Start</button>
+        <button id="stopBar">Stop</button>
+      </div>
+      <canvas id="liveBarChart" width="400" height="200"></canvas>
+    </section>
+
+    <!-- Live Messages -->
+   <!-- Live Messages -->
+<section class="card collapsible full-width">
+    <h2>Live Messages <span class="toggleBtn">▼</span></h2>
+    
+    <!-- Messages List -->
+    <ul id="liveUpdates" style="border:1px solid #ccc; padding:10px; height:200px; overflow-y:auto;"></ul>
+    
+    <!-- Message Submission Form -->
+    <form id="messageForm" style="margin-top:10px;">
+      <input type="text" id="messageInput" placeholder="Type a message" required style="width:70%; padding:5px;">
+      <button type="submit" style="padding:5px;">Send</button>
+    </form>
+  </section>
+  
+  </main>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
