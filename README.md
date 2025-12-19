@@ -91,10 +91,6 @@ go-dashboard/
 | Charts not showing         | Wrap JS code in `document.addEventListener('DOMContentLoaded', () => {...})` |
 | SSE data not updating      | Ensure headers: `Content-Type: text/event-stream`, `Cache-Control: no-cache` |
 
----
-# Go + Gin Real-Time Dashboard
-
-This is a real-time dashboard web application built with Go, Gin, PostgreSQL, and Chart.js. It demonstrates secure authentication, live charts, live messages, and dynamic user interactions.
 
 ---
 
@@ -139,6 +135,7 @@ This is a real-time dashboard web application built with Go, Gin, PostgreSQL, an
 ```sql
 CREATE DATABASE godashboard;
 \c godashboard
+
 Create users table:
 
 CREATE TABLE users (
@@ -146,7 +143,69 @@ CREATE TABLE users (
     username TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL
 );
+
+---
+
 ## AI Prompt Journal (Learning Reflections)
+
+Add a Test User
+
+Important: Passwords must be hashed with bcrypt. Plain text passwords will not work.
+
+Option 1: Create via Signup Page
+
+Run the Go server:
+
+go run main.go
+
+Open browser: http://localhost:9090/signup
+
+Create a user (e.g., testuser / testpass)
+
+Login using the credentials.
+
+Option 2: Manual Insert with Bcrypt
+
+Generate a bcrypt hash in Go:
+
+package main
+
+import (
+	"fmt"
+	"golang.org/x/crypto/bcrypt"
+)
+
+func main() {
+	password := "testpass"
+	hash, _ := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	fmt.Println(string(hash))
+}
+
+
+Copy the printed hash and insert into the database:
+
+INSERT INTO users(username, password) VALUES ('testuser', '<PASTE_HASH_HERE>');
+
+
+Replace <PASTE_HASH_HERE> with the generated hash.
+
+Login will now work with username: testuser and password: testpass.
+
+5. Configure Go Project
+
+Update PostgreSQL connection string in main.go:
+
+connStr := "user=postgres password=YOUR_PASSWORD dbname=godashboard sslmode=disable"
+
+
+Replace YOUR_PASSWORD with your PostgreSQL password.Mine in this case is 5432
+
+6. Run the Project
+go run main.go
+
+
+Server runs on http://localhost:9090.
+
 
 | Prompt                                           | Reflection                                       |
 |-------------------------------------------------|-------------------------------------------------|
