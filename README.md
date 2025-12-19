@@ -69,6 +69,14 @@ go-dashboard/
 - Logout functionality
 - Protected routes (dashboard, APIs, SSE streams)
 
+---
+
+### Demo Login Credentials
+
+```text
+Username: pkilemi
+Password: 2030?!A
+
 ## Features & Expected Output
 
 | Feature           | Description                           | Expected Output                                  |
